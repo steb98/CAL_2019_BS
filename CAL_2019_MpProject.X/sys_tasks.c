@@ -10,13 +10,14 @@
 
 #include "mcal_init.h"
 #include "asw_com.h"
+#include "light_sig.h"
 
 T_U16 a = 0;
 
 void TASK_Inits()
 {
     MCAL_vInit();
-    GPIO_u8SetPortPin(PORT_A, 10, DIGITAL ,OUTPUT);
+    GPIO_u8WritePortPin(PORT_A,10,TRUE);
 }
 
 void TASK_1ms()
@@ -37,6 +38,7 @@ void TASK_10ms()
 void TASK_100ms()
 { 
     
+    //vBatteryLow();
 }
 
 void TASK_500ms()
@@ -46,6 +48,6 @@ void TASK_500ms()
 
 void TASK_1000ms()
 {
-    a = !a;
-    GPIO_u8WritePortPin(PORT_A, 10, a);
+   
+    
 }

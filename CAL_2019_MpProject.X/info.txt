@@ -1,1 +1,0 @@
-Microcontroler: dsPIC33FJ128MC804

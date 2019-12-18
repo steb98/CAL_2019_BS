@@ -17,4 +17,5 @@ asw_move.h  \
 rte.h  \
 hal_dc.h  \
 hal_servo.h  \
- light_sig.h 
+ hal_line.h  \
+light_sig.h 

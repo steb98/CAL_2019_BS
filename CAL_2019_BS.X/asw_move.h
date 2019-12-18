@@ -9,7 +9,8 @@
 #define	ASW_MOVE_H_
 
 void Asw_vCycleAngle();
-
+void Asw_vStopOnLine();
+void Asw_vLineFollowingRegulator();
 
 #endif	/* ASW_MOVE_H */
 

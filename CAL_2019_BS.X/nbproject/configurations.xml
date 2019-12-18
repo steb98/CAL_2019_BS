@@ -24,6 +24,7 @@
       <itemPath>rte.h</itemPath>
       <itemPath>hal_servo.h</itemPath>
       <itemPath>asw_move.h</itemPath>
+      <itemPath>hal_line.h</itemPath>
     </logicalFolder>
     <logicalFolder name="LinkerScript"
                    displayName="Linker Files"
@@ -50,6 +51,7 @@
       <itemPath>hal_dc.c</itemPath>
       <itemPath>hal_servo.c</itemPath>
       <itemPath>asw_move.c</itemPath>
+      <itemPath>hal_line.c</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"
@@ -68,9 +70,9 @@
         <targetDevice>dsPIC33FJ128MC804</targetDevice>
         <targetHeader></targetHeader>
         <targetPluginBoard></targetPluginBoard>
-        <platformTool>PICkit3PlatformTool</platformTool>
+        <platformTool>Simulator</platformTool>
         <languageToolchain>XC16</languageToolchain>
-        <languageToolchainVersion>1.36</languageToolchainVersion>
+        <languageToolchainVersion>1.41</languageToolchainVersion>
         <platform>3</platform>
       </toolsSet>
       <packs>
@@ -743,6 +745,7 @@
         <property key="REAL TIME CLOCK AND CALENDAR" value="true"/>
         <property key="SPI 1" value="true"/>
         <property key="SPI 2" value="true"/>
+        <property key="SecureSegment.SegmentProgramming" value="FullChipProgramming"/>
         <property key="TIMER1" value="true"/>
         <property key="TIMER2" value="true"/>
         <property key="TIMER3" value="true"/>
@@ -754,10 +757,12 @@
                   value="ToolFirmwareOption.UseLatest"/>
         <property key="UART 1" value="true"/>
         <property key="UART 2" value="true"/>
+        <property key="communication.activationmode" value="nohv"/>
         <property key="communication.interface"
                   value="${communication.interface.default}"/>
+        <property key="communication.interface.jtag" value="2wire"/>
         <property key="communication.speed" value="${communication.speed.default}"/>
-        <property key="debugoptions.useswbreakpoints" value="false"/>
+        <property key="debugoptions.useswbreakpoints" value="true"/>
         <property key="memories.aux" value="false"/>
         <property key="memories.bootflash" value="true"/>
         <property key="memories.configurationmemory" value="true"/>
@@ -772,6 +777,7 @@
         <property key="memories.programmemory" value="true"/>
         <property key="memories.programmemory.ranges" value="0-157ff"/>
         <property key="poweroptions.powerenable" value="false"/>
+        <property key="programmerToGoImageName" value="CAL_2019_BS_ptg"/>
         <property key="programoptions.donoteraseauxmem" value="false"/>
         <property key="programoptions.eraseb4program" value="true"/>
         <property key="programoptions.ledbrightness" value="5"/>
@@ -782,6 +788,8 @@
         <property key="programoptions.pgmentry.voltage" value="low"/>
         <property key="programoptions.pgmspeed" value="Med"/>
         <property key="programoptions.preservedataflash" value="false"/>
+        <property key="programoptions.preservedataflash.ranges"
+                  value="${memories.dataflash.default}"/>
         <property key="programoptions.preserveeeprom" value="false"/>
         <property key="programoptions.preserveeeprom.ranges" value=""/>
         <property key="programoptions.preserveprogram.ranges" value=""/>
@@ -790,6 +798,8 @@
         <property key="programoptions.programcalmem" value="false"/>
         <property key="programoptions.programuserotp" value="false"/>
         <property key="programoptions.testmodeentrymethod" value="VDDFirst"/>
+        <property key="ptgProgramImage" value="true"/>
+        <property key="ptgSendImage" value="true"/>
         <property key="voltagevalue" value="3.25"/>
       </pk4hybrid>
     </conf>

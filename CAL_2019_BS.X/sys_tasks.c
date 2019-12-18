@@ -17,17 +17,20 @@
 
 
 
+
 void TASK_Inits()
 {
     MCAL_vInit();
-    GPIO_u8SetPortPin(PORT_A, 10, DIGITAL ,OUTPUT);
-    RTE_vMotorInit();
+    GPIO_u8SetPortPin(PORT_A, 10, DIGITAL ,OUTPUT); //Pentru lumini
+    RTE_vMotorInit();//Initializare servo si motor
+    RTE_vsetMotorSpeed(30);
+    RTE_vSetWheelPosition(CENTER);
     
-//    RTE_vsetMotorSpeed(1);
 }
 
 void TASK_1ms()
 {
+    //RTE_vStopOnLine();
     
 }
 
@@ -38,11 +41,13 @@ void TASK_5ms()
 
 void TASK_10ms()
 {   
-
+    RTE_vLineFollowingRegulator();
+   // RTE_vsetMotorSpeed(20);
 }
 
 void TASK_100ms()
 {   
+    
     vBatteryLow();
 }
 
@@ -53,7 +58,9 @@ void TASK_500ms()
 
 void TASK_1000ms()
 {
-    //Asw_vCycleAngle();
-    RTE_vSetAngle(60);
+    
+   // RTE_vSetWheelPosition(85);
+   // RTE_vSetAngle(90);
+   // Asw_vCycleAngle();
     
 }

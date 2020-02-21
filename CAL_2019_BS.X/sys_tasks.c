@@ -15,6 +15,7 @@
 #include "mcal_gpio.h"
 #include "rte.h"
 
+#include "asw_battery.h"
 
 
 
@@ -22,9 +23,9 @@ void TASK_Inits()
 {
     MCAL_vInit();
     GPIO_u8SetPortPin(PORT_A, 10, DIGITAL ,OUTPUT); //Pentru lumini
-    RTE_vMotorInit();//Initializare servo si motor
-    RTE_vsetMotorSpeed(30);
-    RTE_vSetWheelPosition(CENTER);
+    //RTE_vMotorInit();//Initializare servo si motor
+    //RTE_vsetMotorSpeed(30);
+    //RTE_vSetWheelPosition(CENTER);
     
 }
 
@@ -41,19 +42,19 @@ void TASK_5ms()
 
 void TASK_10ms()
 {   
-    RTE_vLineFollowingRegulator();
+   // RTE_vLineFollowingRegulator();
    // RTE_vsetMotorSpeed(20);
 }
 
 void TASK_100ms()
 {   
+    //vBatteryLow();
     
-    vBatteryLow();
 }
 
 void TASK_500ms()
 { 
-    
+    vBlinkBattery();
 }
 
 void TASK_1000ms()

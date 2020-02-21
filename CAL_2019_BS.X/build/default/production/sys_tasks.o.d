@@ -18,4 +18,6 @@ rte.h  \
 hal_dc.h  \
 hal_servo.h  \
  hal_line.h  \
-light_sig.h 
+light_sig.h  \
+asw_battery.h  \
+hal_battery.h 

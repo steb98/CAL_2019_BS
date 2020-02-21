@@ -3,13 +3,15 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/MPLab_Projects/new_p/CAL_2019_BS.X/sys_tasks.c</file>
-            <file>file:/D:/MPLab_Projects/new_p/CAL_2019_BS.X/asw_move.c</file>
-            <file>file:/D:/MPLab_Projects/new_p/CAL_2019_BS.X/asw_move.h</file>
-            <file>file:/D:/MPLab_Projects/new_p/CAL_2019_BS.X/rte.h</file>
-            <file>file:/D:/MPLab_Projects/new_p/CAL_2019_BS.X/main.c</file>
-            <file>file:/D:/MPLab_Projects/new_p/CAL_2019_BS.X/general_types.h</file>
-            <file>file:/D:/MPLab_Projects/new_p/CAL_2019_BS.X/hal_line.c</file>
+            <file>file:/home/buggy/Downloads/CAL_2019_BS/CAL_2019_BS.X/asw_battery.h</file>
+            <file>file:/home/buggy/Downloads/CAL_2019_BS/CAL_2019_BS.X/sys_schedule.c</file>
+            <file>file:/home/buggy/Downloads/CAL_2019_BS/CAL_2019_BS.X/sys_tasks.c</file>
+            <file>file:/home/buggy/Downloads/CAL_2019_BS/CAL_2019_BS.X/asw_battery.c</file>
+            <file>file:/home/buggy/Downloads/CAL_2019_BS/CAL_2019_BS.X/mcal_interrupts.c</file>
+            <file>file:/home/buggy/Downloads/CAL_2019_BS/CAL_2019_BS.X/hal_battery.c</file>
+            <file>file:/home/buggy/Downloads/CAL_2019_BS/CAL_2019_BS.X/mcal_adc.c</file>
+            <file>file:/home/buggy/Downloads/CAL_2019_BS/CAL_2019_BS.X/light_sig.h</file>
+            <file>file:/home/buggy/Downloads/CAL_2019_BS/CAL_2019_BS.X/hal_battery.h</file>
         </group>
     </open-files>
 </project-private>

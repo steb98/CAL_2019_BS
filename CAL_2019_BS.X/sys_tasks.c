@@ -27,6 +27,7 @@ void TASK_Inits()
     MCAL_vInit();
     GPIO_u8SetPortPin(PORT_A, 10, DIGITAL ,OUTPUT); //Pentru lumini
     RTE_vMotorInit();//Initializare servo si motor
+    RTE_vSetMotorDir(FALSE);
     RTE_vsetMotorSpeed(30);
     RTE_vSetWheelPosition(CENTER);
     
@@ -46,7 +47,7 @@ void TASK_5ms()
 void TASK_10ms()
 {   
     RTE_vLineFollowingRegulator();
-   // RTE_vsetMotorSpeed(20);
+   
     
 }
 
@@ -70,5 +71,6 @@ void TASK_1000ms()
    // RTE_vSetWheelPosition(85);
    // RTE_vSetAngle(90);
    // Asw_vCycleAngle();
+    
     
 }

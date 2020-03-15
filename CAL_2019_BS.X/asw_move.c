@@ -5,62 +5,105 @@
 
 T_S8 error;
 T_S8 proportionalP;
-T_U8 lineValue;
+static T_U8 lineValue;
+static BOOL reversing=FALSE;
+static T_F16 setAngle;
 void Asw_vLineFollowingRegulator(){
-    
+    static int counter=0;
     lineValue = Hal_u8GetValueLineFollower();
+    counter++;
+    if(lineValue==0 && counter==3)
+    {
+        reversing=TRUE;
+        counter=0;
+    }
+    if(counter==3)
+    {
+        counter=0;
+    }
     
-    //calcul grad eroare(deviatie de la pozitia de echilibru)
-    switch(lineValue){
-        case 0b00011000:
-            error = 0;
-            break;
+    if(reversing==FALSE)
+    {
+        RTE_vsetMotorSpeed(30);
+        RTE_vSetMotorDir(FALSE);
+        
+        //calcul grad eroare(deviatie de la pozitia de echilibru)
+        switch(lineValue){
+            case 0b00011000:
+                error = 0;
+                break;
+                
+            case 0b00001000:
+                error = 1;
+                break;
+            case 0b00001100:
+                error = 2;
+                break;
+            case 0b00000100:
+                error = 3;
+                break;
+                
+            case 0b00000110:
+                error = 4;
+                break;
+            case 0b00000010:
+                error = 5;
+                break;
+                
+            case 0b00010000:
+                error = -1;
+                break;
+            case 0b00110000:
+                error = -2;
+                break;
+            case 0b00100000:
+                error = -3;
+                break;
+                
+            case 0b01100000:
+                error = -4;
+                break;
+            case 0b01000000:
+                error = -5;
+                break;
+                
+            default:
+                
+                break;
+                
+                
+        }
+        
+    }else{
+        //out of line procedure
+        
+        if(setAngle>CENTER){
+            //steering left in reverse
+            RTE_vSetMotorDir(TRUE);
+            RTE_vsetMotorSpeed(25);
+            RTE_vSetWheelPosition(HLEFT);
             
-        case 0b00001000:
-            error = 1;
-            break;
-        case 0b00001100:
-            error = 2;
-            break;
-        case 0b00000100:
-            error = 3;
-            break;
-            
-        case 0b00000110:
-            error = 4;
-            break;
-        case 0b00000010:
-            error = 5;
-            break;
-            
-        case 0b00010000:
-            error = -1;
-            break;
-        case 0b00110000:
-            error = -2;
-            break;
-        case 0b00100000:
-            error = -3;
-            break;
-            
-        case 0b01100000:
-            error = -4;
-            break;
-        case 0b01000000:
-            error = -5;
-            break;
-             
-        default:
-            
-            break;
+        }else{
+            //steering right in reverse
+            RTE_vSetMotorDir(TRUE);
+            RTE_vsetMotorSpeed(25);
+            RTE_vSetWheelPosition(HRIGHT);
+        }
+        lineValue = Hal_u8GetValueLineFollower();
+        if(lineValue==0b00001000)
+        {
+            reversing=FALSE;
+        }
         
         
     }
-     
-  proportionalP =Kp*error;//calcul element proportional(P)
-  
-
-  RTE_vSetWheelPosition(CENTER + proportionalP);//determinare unghi
+    
+    proportionalP =Kp*error;//calcul element proportional(P)
+    
+    if(reversing==FALSE){
+    setAngle=CENTER+proportionalP;
+    RTE_vSetWheelPosition(setAngle);//determinare unghi
+    }
     
 }
 
@@ -75,7 +118,7 @@ void Asw_vCycleAngle()
 {
     switch (dir)
     {
-
+        
         case 1:
             RTE_vSetWheelPosition(angle);
             if(angle >= 105)
@@ -95,13 +138,13 @@ void Asw_vCycleAngle()
             }
             angle=angle-pas;
             break;
-          
+            
         default:
             break;
-
-    }
             
-      
+    }
+    
+    
 }
 
 /*

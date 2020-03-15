@@ -2,15 +2,17 @@
 #include "mcal_adc.h"
 T_F16 Hal_ValAdc2Tensiune()
 {
-    T_F16 suma=0;
-    T_U16 valADC=0.0;
+    T_F16 suma=0.0;
+    T_U16 valADC=0;
     T_F16 tensCitita=0.0;
     int i;
      
     for(i=0;i<5;i++)
     {
-        valADC=ADC_u16Read(0);
-        tensCitita=3.07*tensCitita/4095;
+        //valADC=ADC_u16Read(0);
+        valADC=4095;
+        tensCitita=(T_F16)valADC/(T_F16)4095*3.07;
+        tensCitita=tensCitita*4;
         
         suma+=tensCitita;
     }
@@ -18,7 +20,7 @@ T_F16 Hal_ValAdc2Tensiune()
     
 }
 int Hal_Tens2Procent(T_F16 tensiune){
-    T_F16 rezolutie;
+    T_F16 rezolutie=0;
     if(tensiune<=8.7 && tensiune>=7)
     {
         rezolutie=(100-20)/(8.4-7);

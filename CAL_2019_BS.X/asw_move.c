@@ -12,40 +12,44 @@ void Asw_vLineFollowingRegulator(){
     
     //calcul grad eroare(deviatie de la pozitia de echilibru)
     switch(lineValue){
-        case 12:
+        case 0b00011000:
             error = 0;
             break;
-        
-        case 4:
+            
+        case 0b00001000:
             error = 1;
             break;
-        case 6:
+        case 0b00001100:
             error = 2;
             break;
-        case 2:
+        case 0b00000100:
             error = 3;
             break;
-        case 3:
+            
+        case 0b00000110:
             error = 4;
             break;
-        case 1:
+        case 0b00000010:
             error = 5;
             break;
-        case 8:
+            
+        case 0b00010000:
             error = -1;
             break;
-        case 24:
+        case 0b00110000:
             error = -2;
             break;
-        case 16:
+        case 0b00100000:
             error = -3;
             break;
-        case 48:
+            
+        case 0b01100000:
             error = -4;
             break;
-        case 32:
+        case 0b01000000:
             error = -5;
             break;
+             
         default:
             
             break;

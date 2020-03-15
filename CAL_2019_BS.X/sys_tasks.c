@@ -17,15 +17,18 @@
 
 #include "asw_battery.h"
 
+#include "hal_onstacle.h"
+#include "asw_encoder.h"
+
 
 
 void TASK_Inits()
 {
     MCAL_vInit();
     GPIO_u8SetPortPin(PORT_A, 10, DIGITAL ,OUTPUT); //Pentru lumini
-    //RTE_vMotorInit();//Initializare servo si motor
-    //RTE_vsetMotorSpeed(30);
-    //RTE_vSetWheelPosition(CENTER);
+    RTE_vMotorInit();//Initializare servo si motor
+    RTE_vsetMotorSpeed(30);
+    RTE_vSetWheelPosition(CENTER);
     
 }
 
@@ -37,24 +40,28 @@ void TASK_1ms()
 
 void TASK_5ms()
 {
-
+    
 }
 
 void TASK_10ms()
 {   
-   // RTE_vLineFollowingRegulator();
+    RTE_vLineFollowingRegulator();
    // RTE_vsetMotorSpeed(20);
+    
 }
 
 void TASK_100ms()
 {   
     //vBatteryLow();
+  
     
 }
 
 void TASK_500ms()
 { 
-    vBlinkBattery();
+    //vBlinkBattery();
+    //int a =Hal_Tens2Procent(Hal_ValAdc2Tensiune());
+   // ASW_MoveCentimeter(4);
 }
 
 void TASK_1000ms()

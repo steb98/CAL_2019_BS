@@ -11,22 +11,24 @@
 #include "hal_dc.h"
 #include "hal_servo.h"
 #include "hal_line.h"
+#include "hal_onstacle.h"
 
 
 #define RTE_vSetMotorDir Hal_vSetMotDir
 #define RTE_vsetMotorSpeed Hal_vSetMotorSpeed
 #define RTE_vMotorInit Hal_vMotorInit
+#define RTE_vCheckObstacle hal_checkObstacle
 
 //Servo motor angle
-#define CENTER 90
+#define CENTER 95       //90
 //Servo motor angle
-#define LLEFT 75
+#define LLEFT 75        //75
 //Servo motor angle
-#define HLEFT 65
+#define HLEFT 65        //65
 //Servo motor angle
-#define LRIGHT 105
+#define LRIGHT 105      //105
 //Servo motor angle
-#define HRIGHT 115
+#define HRIGHT 115      //115
 
 #define RTE_vLineFollowingRegulator Asw_vLineFollowingRegulator
 

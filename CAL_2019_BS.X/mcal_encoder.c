@@ -21,7 +21,7 @@ void QEI_vInit(void)
     RPINR14bits.QEB1R = 25;
     
     /* Timer Input Clock Prescale 1:64 */
-    QEI1CONbits.TQCKPS = 0b10;           
+    QEI1CONbits.TQCKPS = 0b10;  
     /* Encoder enabled (x4 mode) with position counter reset by match(MAXxCNT) */
     QEICONbits.QEIM = 0b111; 
     /* Set count register value around the middle of the possible value range */
@@ -53,6 +53,22 @@ T_U16 QEI_u16getCount()
 void QEI_vResetCount()
 {
     POS1CNT=32000;
+}
+
+T_S16 QEI_s16getElapsed()
+{
+    static T_U16 u16PrevCount = 32000;
+    T_U16 u16Count=0;
+    T_S16 s16Elapsed=0;
+    
+    u16Count=QEI_u16getCount();
+    
+    s16Elapsed =u16PrevCount - u16Count;
+    QEI_vResetCount();
+    
+    u16PrevCount=u16Count;
+    
+    return s16Elapsed/100;
 }
 
 

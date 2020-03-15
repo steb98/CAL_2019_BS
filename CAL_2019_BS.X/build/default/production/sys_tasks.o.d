@@ -18,6 +18,9 @@ rte.h  \
 hal_dc.h  \
 hal_servo.h  \
  hal_line.h  \
+hal_onstacle.h  \
 light_sig.h  \
 asw_battery.h  \
-hal_battery.h 
+hal_battery.h  \
+ asw_encoder.h  \
+hal_encoder.h 

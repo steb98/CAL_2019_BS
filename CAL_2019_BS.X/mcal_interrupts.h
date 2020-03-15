@@ -15,11 +15,16 @@
 #define INT1Pin 31
 #define INT2Pin 22
 
+extern BOOL interrupt_obstacleFlag;
+
 /* Interrupt initialization function declarations  */
 void INT_vInit(void);    
 void INT0_vInit(T_U8);
 void INT1_vInit(T_U8);
 void INT2_vInit(T_U8);
+
+BOOL INT0_bGetPolarity();
+void INT0_vSetPolarity(int polarity);
 
 /* Interrupt Service Routine Declarations */
 void __attribute__((__interrupt__, no_auto_psv)) _INT0Interrupt(void);

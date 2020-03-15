@@ -1,4 +1,4 @@
-
+    
 #include "mcal_interrupts.h"
 
 /* Interrupt Polarity */
@@ -8,12 +8,32 @@
 /* RF Interrupt Request Flag, set in INT2 by the nRF24L01 module*/
 extern BOOL bRF_IRQ;
 
+extern BOOL interrupt_obstacleFlag=0;
+
 
 /* Obstacle sensor interrupt */
 /*****************************/
 void __attribute__((__interrupt__, no_auto_psv)) _INT0Interrupt(void)
 {
+    /* Clear INT0 interrupt flag */
+    IFS0bits.INT0IF = 0;
+    
     /* Write the code to detect obstacle */
+    
+    if(INT0_bGetPolarity() == 0){
+        //exista obstacol
+        interrupt_obstacleFlag=TRUE;
+        INT0_vSetPolarity(NEG_EDGE);
+        
+    }
+    else{
+        //nu exista obstacol
+        interrupt_obstacleFlag=FALSE;
+        INT0_vSetPolarity(POS_EDGE);
+    }
+    
+    
+    
 }
 
 
@@ -47,6 +67,18 @@ void __attribute__((__interrupt__, no_auto_psv)) _INT2Interrupt(void)
 *  List of arguments: no arguments 
 *  Return value     : no return value
 ********************************************************************************/
+BOOL INT0_bGetPolarity()
+{
+   return INTCON2bits.INT0EP;
+}
+
+void INT0_vSetPolarity(int polarity){
+    
+    INTCON2bits.INT0EP = polarity;
+}
+
+
+
 void INT_vInit()
 {
     /* Disable Nested Interrupts */

@@ -57,6 +57,7 @@ void QEI_vResetCount()
 
 T_S16 QEI_s16getElapsed()
 {
+    /*
     static T_U16 u16PrevCount = 32000;
     T_U16 u16Count=0;
     T_S16 s16Elapsed=0;
@@ -69,6 +70,12 @@ T_S16 QEI_s16getElapsed()
     u16PrevCount=u16Count;
     
     return s16Elapsed/100;
+    */
+    
+    T_U16 count = QEI_u16getCount();
+    T_S16 elapsed = -count+32000;  //get difference of impulses
+    QEI_vResetCount(); //reset counter    
+    return elapsed;
 }
 
 
